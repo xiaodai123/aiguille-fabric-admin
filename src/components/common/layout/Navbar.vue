@@ -15,7 +15,7 @@
                     <!-- 设置国际化 -->
                     <!-- <LangSelect class="for-line"></LangSelect> -->
                     <!-- 用户操作 -->
-                    <el-dropdown class="for-line" trigger="click">
+                    <el-dropdown class="for-line" trigger="hover">
                         <div style="display:flex;">
                             <img class="user-img" :src="userJpg" alt="">
                         </div>

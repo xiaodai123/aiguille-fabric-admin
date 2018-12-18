@@ -17,7 +17,7 @@
 
 小图标采用阿里图标库：
 
-	[class^="el-icon-spa"], [class*=" el-icon-spa"] {
+	[class^="el-icon-fabric"], [class*=" el-icon-fabric"] {
 
   		font-family:"fontFamily" !important;
 	

@@ -6,7 +6,7 @@
                 <router-link ref='tag' class="tags-view-item" :class="isActive(tag)?'active':''" v-for="tag in Array.from(visitedViews)"
                     :to="tag" :key="tag.path">
                     {{tag.title}}
-                    <span class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
+                    <span v-if="tag.title != '首页'" class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
                 </router-link>
             </scroll-pane>
         <!-- </ScrollBar> -->

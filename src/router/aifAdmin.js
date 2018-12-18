@@ -7,7 +7,7 @@ const routes = [
         // alwaysShow: true, // will always show the root menu
         meta: {
             roles: ['admin', 'editor'], // you can set roles in root nav
-            icon: 'shouyeyong',
+            icon: 'wangluo',
             title: '区块链网络配置'
         },
         children: [
@@ -17,7 +17,7 @@ const routes = [
                 component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/chainNetConfig/CaManage'),
                 meta: {
                     roles: ['admin', 'editor'],
-                    icon: 'shouyeyong',
+                    icon: 'yingyong',
                     title: 'CA管理'
                 }
             },
@@ -27,7 +27,7 @@ const routes = [
                 component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/chainNetConfig/OrdererManage'),
                 meta: {
                     roles: ['admin', 'editor'],
-                    icon: 'shouyeyong',
+                    icon: 'yingyong',
                     title: 'Orderer管理'
                 }
             },
@@ -37,7 +37,7 @@ const routes = [
                 component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/chainNetConfig/OrganizationManage'),
                 meta: {
                     roles: ['admin', 'editor'],
-                    icon: 'shouyeyong',
+                    icon: 'yingyong',
                     title: 'Organization管理'
                 }
             },
@@ -47,7 +47,7 @@ const routes = [
                 component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/chainNetConfig/PeerManage'),
                 meta: {
                     roles: ['admin', 'editor'],
-                    icon: 'shouyeyong',
+                    icon: 'yingyong',
                     title: 'Peer管理'
                 }
             }
@@ -60,7 +60,7 @@ const routes = [
         // alwaysShow: true, // will always show the root menu
         meta: {
             roles: ['admin', 'editor'], // you can set roles in root nav
-            icon: 'shouyeyong',
+            icon: 'lian',
             title: '通道&链码管理'
         },
         children: [
@@ -70,7 +70,7 @@ const routes = [
                 component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/channel&chaincode/ChannelManage'),
                 meta: {
                     roles: ['admin', 'editor'],
-                    icon: 'shouyeyong',
+                    icon: 'yingyong',
                     title: 'Channel管理'
                 }
             },
@@ -80,7 +80,7 @@ const routes = [
                 component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/channel&chaincode/ChaincodeManage'),
                 meta: {
                     roles: ['admin', 'editor'],
-                    icon: 'shouyeyong',
+                    icon: 'yingyong',
                     title: 'Chaincode管理'
                 }
             }
@@ -102,7 +102,7 @@ const routes = [
                 component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/UserManage'),
                 meta: {
                     roles: ['admin', 'editor'],
-                    icon: 'shouyeyong',
+                    icon: 'yonghu',
                     title: '用户管理'
                 }
             }
