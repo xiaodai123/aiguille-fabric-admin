@@ -1,4 +1,4 @@
-import constantRouterMap from '../../router';
+import constantRouterMap from '@src/router';
 /**
  * 通过meta.role判断是否与当前用户权限匹配
  * @param roles
@@ -46,14 +46,15 @@ const permission = {
     actions: {
         generateRoutes({ commit }, data) {
             return new Promise(resolve => {
-                const { roles, asyncRouterMap } = data;
-                let accessedRouters;
-                if (roles.indexOf('admin') >= 0) {
-                    accessedRouters = asyncRouterMap;
-                } else {
-                    accessedRouters = fileAsyncRouter(asyncRouterMap, roles);
-                }
-                commit('SET_ROUTERS', accessedRouters);
+                const { asyncRouterMap } = data;
+                // const { roles, asyncRouterMap } = data;
+                // let accessedRouters;
+                // if (roles.indexOf('admin') >= 0) {
+                //     accessedRouters = asyncRouterMap;
+                // } else {
+                //     accessedRouters = fileAsyncRouter(asyncRouterMap, roles);
+                // }
+                commit('SET_ROUTERS', asyncRouterMap);
                 resolve();
             })
         }

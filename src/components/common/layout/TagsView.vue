@@ -1,21 +1,20 @@
 <template>
     <div data-tags-view>
-        <scroll-pane class='tags-view-wrapper' ref='scrollPane'>
-            <router-link ref='tag' class="tags-view-item" :class="isActive(tag)?'active':''" v-for="tag in Array.from(visitedViews)"
-                :to="tag" :key="tag.path" @contextmenu.prevent.native="openMenu(tag,$event)">
-                {{tag.title}}
-                <span v-if="tag.title!=='首页'" class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
-            </router-link>
-        </scroll-pane>
-        <ul class='contextmenu' v-show="visible" :style="{left:left+'px',top:top+'px'}">
-            <li v-if="!isMain" @click="closeSelectedTag(selectedTag)">关闭</li>
-            <li @click="closeOthersTags">关闭其他</li>
-            <li v-if="!isMain" @click="closeAllTags">关闭所有</li>
-        </ul>
+        <!-- <ScrollBar class="tags_view_scrollbar" horizontalSlide> -->
+            <!-- @contextmenu.prevent.native="openMenu(tag,$event)" -->
+            <scroll-pane class='tags-view-wrapper' ref='scrollPane'>
+                <router-link ref='tag' class="tags-view-item" :class="isActive(tag)?'active':''" v-for="tag in Array.from(visitedViews)"
+                    :to="tag" :key="tag.path">
+                    {{tag.title}}
+                    <span class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
+                </router-link>
+            </scroll-pane>
+        <!-- </ScrollBar> -->
     </div>
 </template>
 <script>
-import ScrollPane from './ScrollPane';
+import ScrollPane from '~comp/common/layout/ScrollPane';
+// import ScrollBar from '~comp/common/ScrollBar';
 import { mapGetters } from 'vuex';
 export default {
     components: {
@@ -26,8 +25,7 @@ export default {
             visible: false,
             top: 0,
             left: 0,
-            selectedTag: {},
-            isMain: false
+            selectedTag: {}
         }
     },
     computed: {
@@ -49,25 +47,10 @@ export default {
         $route() {
             this.addViewTags();
             this.moveToCurrentTag();
-            if (this.$route.meta.title === '首页') {
-                this.isMain = true;
-            } else {
-                this.isMain = false;
-            }
-        },
-        visible(value) {
-            if (value) {
-                document.body.addEventListener('click', this.closeMenu);
-            } else {
-                document.body.removeEventListener('click', this.closeMenu);
-            }
         }
     },
     mounted() {
         this.addViewTags()
-        if (this.$route.meta.title === '首页') {
-            this.isMain = true;
-        }
     },
     methods: {
         generateRoute() {
@@ -108,32 +91,30 @@ export default {
                     }
                 }
             })
-        },
-        closeOthersTags() {
-            this.$router.push(this.selectedTag);
-            this.$store.dispatch('tagsView/delOthersViews', this.selectedTag).then(() => {
-                this.moveToCurrentTag();
-            })
-        },
-        closeAllTags() {
-            this.$store.dispatch('tagsView/delAllViews');
-            this.$router.push('/');
-        },
-        openMenu(tag, e) {
-            this.visible = true;
-            this.selectedTag = tag;
-            const offsetLeft = this.$el.getBoundingClientRect().left; // container margin left
-            this.left = e.clientX - offsetLeft + this.whichLeft; // 15: margin right
-            this.top = e.clientY;
-        },
-        closeMenu() {
-            this.visible = false;
         }
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[data-tags-view]{
+    // border-bottom: 1px solid #d8dce5;
+    // box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+    // .tags_view_scrollbar{
+    //     height: 34px;
+    //     margin-bottom: -8px;
+    //     flex: 1;
+    //     .el-scrollbar__wrap{
+    //         overflow-x: hidden;
+    //     }
+    //     .el-scrollbar__view:after{
+    //         content: '';
+    //         display: block;
+    //         clear: both;
+    //     }
+    //     .el-scrollbar__bar.is-horizontal {
+    //         height: 4px;
+    //     }
+    // }
     .tags-view-wrapper {
         background: #fff;
         height: 34px;

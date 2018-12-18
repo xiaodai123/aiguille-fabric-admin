@@ -25,13 +25,8 @@
 </template>
 <script>
 import path from 'path';
-import Vue from 'vue';
 import FontIcon from '~comp/common/FontIcon';
-import SidebarItem from './SidebarItem';
-import { MenuItem, Submenu, Tooltip } from 'element-ui';
-Vue.use(MenuItem);
-Vue.use(Submenu);
-Vue.use(Tooltip);
+import SidebarItem from '~comp/common/layout/SidebarItem';
 export default {
     name: 'SidebarItem',
     props: {
@@ -79,7 +74,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[data-sidebar-item] {
     .submenu-title-noDropdown {
         padding-left: 10px !important;

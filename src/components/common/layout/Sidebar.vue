@@ -1,7 +1,8 @@
 <template>
     <div data-sidebar-box>
-        <el-scrollbar wrapClass="scrollbar-wrapper">
-            <el-menu :class="{'is-collapse':isCollapse}"
+        <!-- <el-scrollbar wrapClass="scrollbar-wrapper"> -->
+        <ScrollBar class="tags_view_scrollbar">
+            <el-menu style="height: 100vh;" :class="{'is-collapse':isCollapse}"
                 mode="vertical"
                 menu-trigger="click"
                 :default-active="$route.path"
@@ -11,18 +12,14 @@
                 active-text-color="#409eff">
                 <SidebarItem v-for="(route, index) in permissionRouters" :key="index" :item="route" :base-path="route.path"></SidebarItem>
             </el-menu>
-        </el-scrollbar>
+        <!-- </el-scrollbar> -->
+        </ScrollBar>
     </div>
 </template>
 <script>
-import Vue from 'vue';
 import { mapGetters } from 'vuex';
-import SidebarItem from './SidebarItem';
-import { Scrollbar, Menu, Submenu, MenuItem } from 'element-ui';
-Vue.use(Scrollbar);
-Vue.use(Menu);
-Vue.use(Submenu);
-Vue.use(MenuItem);
+import SidebarItem from '~comp/common/layout/SidebarItem';
+import ScrollBar from '~comp/common/ScrollBar';
 export default {
     computed: {
         ...mapGetters([
@@ -34,11 +31,12 @@ export default {
         }
     },
     components: {
-        SidebarItem
+        SidebarItem,
+        ScrollBar
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 .el-menu--vertical {
     top: 0px!important;
     .el-menu--popup-right-start {
@@ -50,11 +48,17 @@ div[data-sidebar-box] {
     .horizontal-collapse-transition {
         transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
-    .scrollbar-wrapper {
-        overflow-x: hidden!important;
-        margin-bottom: 0px!important;
-        .el-scrollbar__view {
-            height: 100%;
+    .tags_view_scrollbar {
+        height: 100vh;
+        margin-bottom: -2px;
+        flex: 1;
+        .el-scrollbar__wrap{
+            overflow-x: hidden;
+        }
+        .el-scrollbar__view:after{
+            content: '';
+            display: block;
+            clear: both;
         }
         .is-collapse {
             .el-submenu {

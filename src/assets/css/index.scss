@@ -6,10 +6,23 @@ body {
     text-rendering: optimizeLegibility;
     font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
-
-label {
-    font-weight: 700;
+.cm_line {
+    font-size: 14px;
 }
+.cm_line::before {
+    content: "|";
+    font-size: 0.8em;
+    background-color: #1875f0;
+    color: #1875f0;
+    margin-right: 0.43em;
+}
+.cm_dotted {
+    border: 1px dashed #DBE4F0;
+}
+
+// label {
+//     font-weight: 700;
+// }
 
 html {
     height: 100%;
@@ -180,4 +193,39 @@ code {
 
 .multiselect--active {
     z-index: 1000 !important;
+}
+
+/*公共样式*/
+// 公共提示框样式处理
+.common_prompt_box_style{
+    .el-message-box__message{
+        p{
+            height: auto;
+        }
+        .msg_box{
+            position: relative;
+            padding-left: 36px;
+            padding-right: 20px;
+            color: #333;
+            .el-message-box__status{
+                left: 0;
+            }
+            .msg_content{
+                font-size: 13px;
+            }
+            .switch_btn{
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        .more_msg_box{
+            height: 0;
+            overflow: hidden;
+            margin-top: 5px;
+            padding-left: 36px;
+            color: #999;
+        }
+    }
 }

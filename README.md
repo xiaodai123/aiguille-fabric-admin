@@ -1,4 +1,4 @@
-# learning-spa
+# aiguille-fabric-admin
 版本：webpack@3.11.0、vue@2.4.2、element-ui@2.3.6。
 
 初始化（下载依赖包）：npm install
@@ -14,8 +14,6 @@
 初始后台业务用mockjs做拦截http请求返回数据。后期采用node写。
 
 该项目使用eslint规范开发。
-
-# 没整明白nuxt如何去掉postcss.config.js文件
 
 小图标采用阿里图标库：
 

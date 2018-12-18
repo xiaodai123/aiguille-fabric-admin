@@ -1,140 +1,51 @@
+import Vue from 'vue';
+import { $v, PromptBox, ObjPublic } from '~compJs/public';
 import axios from 'axios';
-import {
-    Loading,
-    Message
-} from 'element-ui';
-import {
-    token
-} from './util';
-
-const TIPS_TIME = 2000;
-
-// 创建axios实例
-const service = axios.create({
-    baseURL: '',
-    timeout: 5000 // 请求超时时间
+export const userInfo = JSON.parse(window.sessionStorage.getItem('UINFO'));
+Vue.use({
+    install(Vue) {
+        // 获取用户信息方法
+        Vue.prototype.$getUserInfo = function() {
+            return userInfo || {};
+        }
+        // 提示框方法
+        Vue.prototype.PromptBox = PromptBox;
+        Vue.prototype.$box = PromptBox.common;
+        Vue.prototype.ObjPublic = ObjPublic;
+        // ajax请求方法
+        Vue.prototype.$v = $v;
+        Vue.prototype.$get = function(...arg) {
+            $v.get.apply(this, arg);
+        }
+        Vue.prototype.$delete = function(...arg) {
+            $v.delete.apply(this, arg);
+        }
+        Vue.prototype.$post = function(...arg) {
+            $v.post.apply(this, arg);
+        }
+        Vue.prototype.$put = function(...arg) {
+            $v.put.apply(this, arg);
+        }
+        Vue.prototype.$axios = axios;
+    }
 })
-
-// request拦截器
-service.interceptors.request.use(config => {
-    let xtoken = token.getToken();
-    if (xtoken) {
-        config.headers['X-Token'] = xtoken;
-    }
-    // let sessionId = session.getSessionId;
-    // if (sessionId) {
-    //     config.headers['X-SessionId'] = sessionId;
-    // }
-    return config;
-}, error => {
-    console.log(error);
-    Promise.reject(error);
-});
-
-// response拦截器
-// service.interceptors.response.use(response => {
-//     const res = response.data;
-//     if (res.code !== 20000) {
-//         Message.error({
-//             message: res.message,
-//             duration: TIPS_TIME
-//         });
-//         // 如果登录过期
-//         // sessionStorage.clear();
-//         return Promise.reject(res.message);
-//     } else {
-//         return response;
-//     }
-// });
-/**
- * 封装axios
- */
-class $v {
-    static get(url, params, successFb, failFb, loadingText = '') {
-        return new Promise((resolve, reject) => {
-            let loadingInstance = Loading.service({ fullscreen: true, text: loadingText });
-            service.get(url, {
-                params: params
-            }).then(response => {
-                if (successFb && typeof successFb === 'function') {
-                    successFb(response);
-                }
-                if (loadingInstance) {
-                    loadingInstance.close();
-                }
-                resolve(response);
-            }).catch(err => {
-                if (failFb && typeof failFb === 'function') {
-                    failFb(err.response);
-                } else {
-                    Message.error({
-                        message: err.response.message,
-                        duration: TIPS_TIME
-                    });
-                }
-                if (loadingInstance) {
-                    loadingInstance.close();
-                }
-                reject(err);
-            });
-        })
-    }
-
-    static post(url, data, successFb, failFb, loadingText = '') {
-        return new Promise((resolve, reject) => {
-            let loadingInstance = Loading.service({ fullscreen: true, text: loadingText });
-            service.post(url, data).then(response => {
-                if (successFb && typeof successFb === 'function') {
-                    successFb(response);
-                }
-                if (loadingInstance) {
-                    loadingInstance.close();
-                }
-                resolve(response);
-            }).catch(err => {
-                if (failFb && typeof failFb === 'function') {
-                    failFb(err.response);
-                } else {
-                    Message.error({
-                        message: err.response.message,
-                        duration: TIPS_TIME
-                    });
-                }
-                if (loadingInstance) {
-                    loadingInstance.close();
-                }
-                reject(err);
-            });
-        })
-    }
-
-    static put(url, data, successFb, failFb, loadingText = '') {
-        return new Promise((resolve, reject) => {
-            let loadingInstance = Loading.service({ fullscreen: true, text: loadingText });
-            service.put(url, data).then(response => {
-                if (successFb && typeof successFb === 'function') {
-                    successFb(response);
-                }
-                if (loadingInstance) {
-                    loadingInstance.close();
-                }
-                resolve(response);
-            }).catch(err => {
-                if (failFb && typeof failFb === 'function') {
-                    failFb(err.response);
-                } else {
-                    Message.error({
-                        message: err.response.message,
-                        duration: TIPS_TIME
-                    });
-                }
-                if (loadingInstance) {
-                    loadingInstance.close();
-                }
-                reject(err);
-            });
-        })
+/*
+export default {
+    install(Vue) {
+        Vue.prototype.$v = $v;
+        Vue.prototype.$get = function(...arg) {
+            $v.get.apply(this, arg);
+        }
+        Vue.prototype.$delete = function(...arg) {
+            $v.delete.apply(this, arg);
+        }
+        Vue.prototype.$post = function(...arg) {
+            $v.post.apply(this, arg);
+        }
+        Vue.prototype.$put = function(...arg) {
+            $v.put.apply(this, arg);
+        }
+        Vue.prototype.$axios = axios;
     }
 }
-
-export default $v;
+*/

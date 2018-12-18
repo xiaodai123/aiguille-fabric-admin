@@ -3,7 +3,8 @@ const auth = {
     state: {
         token: '',
         userInfo: {},
-        roles: []
+        roles: [],
+        geti: false
     },
     mutations: {
         SET_TOKEN(state, token) {
@@ -14,6 +15,9 @@ const auth = {
         },
         SET_ROLES(state, roles) {
             state.roles = roles;
+        },
+        SET_GETI(state, geti) {
+            state.geti = geti;
         }
     },
     actions: {
@@ -25,6 +29,9 @@ const auth = {
         },
         setRoles({commit}, roles) {
             commit('SET_ROLES', roles);
+        },
+        setGeti({commit}, geti) {
+            commit('SET_GETI', geti);
         }
     }
 }

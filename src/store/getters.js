@@ -6,6 +6,7 @@ const getters = {
     sidebar: state => state.publics.sidebar,
     permissionRouters: state => state.permission.routers,
     roles: state => state.auth.roles,
+    geti: state => state.auth.geti,
     addRouters: state => state.permission.addRouters
 }
 export default getters

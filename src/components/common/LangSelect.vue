@@ -8,15 +8,9 @@
     </el-dropdown>
 </template>
 <script>
-require('../../assets/icon/iconfont.css');
-import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui';
-import Vue from 'vue';
+require('~compIcon/iconfont.css');
 import { mapGetters } from 'vuex';
 import FontIcon from '~comp/common/FontIcon';
-Vue.use(Dropdown);
-Vue.use(DropdownMenu);
-Vue.use(DropdownItem);
-
 export default {
     computed: {
         ...mapGetters({
@@ -34,7 +28,3 @@ export default {
     }
 }
 </script>
-<style lang="sass" scoped>
-
-</style>
-

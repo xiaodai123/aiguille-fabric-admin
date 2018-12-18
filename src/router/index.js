@@ -18,7 +18,7 @@ const routes = [
             {
                 path: 'index',
                 name: '首页',
-                component: () => import ( /* webpackChunkName: "index" */ '~comp/index'),
+                component: () => import ( /* webpackChunkName: "Index" */ '@src/pages/Index'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'shouyeyong',

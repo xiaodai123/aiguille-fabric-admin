@@ -11,10 +11,10 @@
     </div>
 </template>
 <script>
-import Sidebar from './Sidebar';
-import Navbar from './Navbar';
-import TagsView from './TagsView';
-import Main from './Main';
+import Sidebar from '~comp/common/layout/Sidebar';
+import Navbar from '~comp/common/layout/Navbar';
+import TagsView from '~comp/common/layout/TagsView';
+import Main from '~comp/common/layout/Main';
 import { mapGetters } from 'vuex';
 export default {
     components: {
@@ -33,7 +33,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[data-layout-box] {
     display: flex;
     .sidebar-container {

@@ -9,10 +9,10 @@
     </el-breadcrumb>
 </template>
 <script>
-import Vue from 'vue';
-import { Breadcrumb, BreadcrumbItem } from 'element-ui';
-Vue.use(Breadcrumb);
-Vue.use(BreadcrumbItem);
+// import Vue from 'vue';
+// import { Breadcrumb, BreadcrumbItem } from 'element-ui';
+// Vue.use(Breadcrumb);
+// Vue.use(BreadcrumbItem);
 export default {
     created() {
         this.getBreadcrumb()
@@ -26,6 +26,9 @@ export default {
         getBreadcrumb() {
             let matched = this.$route.matched.filter(item => item.name);
             const first = matched[0];
+            if(first.parent) {
+                matched = [first.parent].concat(matched);
+            }
             if(first && first.name !== '首页') {
                 matched = [{ path: '/index', meta: { title: '首页' } }].concat(matched);
             }
@@ -39,7 +42,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 .app-breadcrumb.el-breadcrumb {
     display: inline-block;
     font-size: 14px;

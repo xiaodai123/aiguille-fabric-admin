@@ -11,9 +11,9 @@
                 <!-- 其他功能 -->
                 <div class="right-menu">
                     <!-- 是否全屏显示 -->
-                    <Screenfull class="for-line"></Screenfull>
+                    <!-- <Screenfull class="for-line"></Screenfull> -->
                     <!-- 设置国际化 -->
-                    <LangSelect class="for-line"></LangSelect>
+                    <!-- <LangSelect class="for-line"></LangSelect> -->
                     <!-- 用户操作 -->
                     <el-dropdown class="for-line" trigger="click">
                         <div style="display:flex;">
@@ -34,26 +34,20 @@
     </div>
 </template>
 <script>
-import Vue from 'vue';
 import { mapGetters } from 'vuex';
 import FontIcon from '~comp/common/FontIcon';
-import Screenfull from '~comp/common/Screenfull';
-import LangSelect from '~comp/common/LangSelect';
-import Breadcrumb from './Breadcrumb';
+// import Screenfull from '~comp/common/Screenfull';
+// import LangSelect from '~comp/common/LangSelect';
+import Breadcrumb from '~comp/common/layout/Breadcrumb';
 import userJpg from '~compImg/user.jpg';
-import $v from '~compJs/ajax';
-import { TO_URL } from '~compJs/public';
-import { Menu, Dropdown, DropdownMenu, DropdownItem } from 'element-ui';
-Vue.use(Menu);
-Vue.use(Dropdown);
-Vue.use(DropdownMenu);
-Vue.use(DropdownItem);
+import { Session } from '~compJs/public';
+import { AIGUILLE_FABRIC } from '~compJs/const';
 export default {
     components: {
         FontIcon,
-        Breadcrumb,
-        Screenfull,
-        LangSelect
+        Breadcrumb
+        // Screenfull,
+        // LangSelect
     },
     computed: {
         ...mapGetters([
@@ -68,11 +62,13 @@ export default {
             this.$store.dispatch('publics/toggleSideBar');
         },
         logout() {
-            $v.post(TO_URL + '/logout', {}, data => {
-                window.location.href = 'login.html';
-            }, error => {
-                console.log(error);
-            });
+            this.$get(AIGUILLE_FABRIC + '/login/userLogout', {}, data => {
+                if (data.code === '0000') {
+                    this.$store.dispatch('auth/setGeti', false);
+                    Session.remove('UINFO');
+                    window.location.href = 'login.html';
+                }
+            })
         }
     },
     data() {
@@ -82,7 +78,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[data-navbar-box] {
     .navbar {
         height: 50px;

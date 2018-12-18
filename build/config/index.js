@@ -12,11 +12,11 @@ module.exports = {
         cssSourceMap: true,
         cacheBusting: true, // 一个配合devtool的配置，当给文件名插入新的hash导致清楚缓存时是否生成souce maps，默认在开发环境下为true
         proxyTable: {
-            '/cq-ocms': {
-                target: 'https://www.cuniq.com',
+            '/aiguille_fabric': {
+                target: 'http://221.226.40.56:18121',
                 changeOrigin: true,
-                secure: false
-                // pathRewrite: { '^/cq-ocms' : '/' }
+                secure: false,
+                pathRewrite: { '^/aiguille_fabric' : '/' }
             }
         },
         autoOpenBrowser: true,
@@ -36,19 +36,14 @@ module.exports = {
     build: {
         useEslint: true,
         filePath: {
-            test: {
-                js: './src/pages/test.js',
-                html: './src/app/test.html'
-                // css: './src/assets/css/test.css'
-            },
             login: {
-                js: './src/pages/login.js',
+                js: './src/app/login.js',
                 html: './src/app/login.html'
                 // css: './src/assets/css/login.scss'
             },
-            simple: {
-                js: './src/pages/simple.js',
-                html: './src/app/simple.html'
+            aifAdmin: {
+                js: './src/app/aifAdmin.js',
+                html: './src/app/aifAdmin.html'
                 // css: './src/assets/css/login.scss'
             }
         }

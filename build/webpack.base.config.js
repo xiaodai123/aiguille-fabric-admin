@@ -18,7 +18,7 @@ function createHtmlWebpackPlugins(filePath) {
     let htmlWebpackPlugins = [];
     Object.keys(filePath).forEach(key => {
         htmlWebpackPlugins.push(new HtmlWebpackPlugin({
-            title: 'Pretty',
+            title: 'AIGUILLE-FABRIC-ADMIN',
             template: filePath[key].html,
             filename: key + '.html',
             chunks: ['runtime', 'common', key],
@@ -98,10 +98,12 @@ const baseConfig = {
         extensions: [ '.js', '.vue', '.scss', '.css', '.json', '.json5' ],
         // 模块别名定义
         alias: {
+            '@src': getPath('./src'),
             '~comp': getPath('./src/components'),
             '~compCss': getPath('./src/assets/css'),
             '~compJs': getPath('./src/assets/js'),
             '~compImg': getPath('./src/assets/img'),
+            '~compIcon': getPath('./src/assets/icon'),
             '~vuex': getPath('./src/store'),
             'vue$': 'vue/dist/vue.common.js'// vue2在npm安装时的规定
         }
