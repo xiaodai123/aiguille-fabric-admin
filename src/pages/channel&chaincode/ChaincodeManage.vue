@@ -32,7 +32,7 @@
                 </el-table-column>
             </el-table>
             <div v-if="pageInfo.total != 0" style="text-align: right;margin-top: 30px;">
-                <el-pagination mini layout="prev, pager, next" :current-page="pageInfo.pageNum" :page-size="pageInfo.pageSize" :total="pageInfo.total" @current-change="currentChange"></el-pagination>
+                <el-pagination mini layout="total, prev, pager, next" :current-page="pageInfo.pageNum" :page-size="pageInfo.pageSize" :total="pageInfo.total" @current-change="currentChange"></el-pagination>
             </div>
         </section>
         <el-dialog :close-on-click-modal="false" :close-on-press-escape="false" :visible.sync="dialogVisible" :title="title">
@@ -128,21 +128,21 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item prop="install" label="链码是否已安装">
-                            <el-checkbox disabled v-model="chaincodeInfo.install"></el-checkbox>
+                            <el-checkbox :disabled="operType == 'INFO'" v-model="chaincodeInfo.install"></el-checkbox>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="24">
                         <el-form-item prop="instantiate" label="链码是否实例化">
-                            <el-checkbox disabled v-model="chaincodeInfo.instantiate"></el-checkbox>
+                            <el-checkbox :disabled="operType == 'INFO'" v-model="chaincodeInfo.instantiate"></el-checkbox>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="24">
                         <el-form-item prop="upgrade" label="链码是否已升级">
-                            <el-checkbox disabled v-model="chaincodeInfo.upgrade"></el-checkbox>
+                            <el-checkbox :disabled="operType == 'INFO'" v-model="chaincodeInfo.upgrade"></el-checkbox>
                         </el-form-item>
                     </el-col>
                 </el-row>

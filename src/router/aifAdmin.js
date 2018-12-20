@@ -90,10 +90,9 @@ const routes = [
         path: '/user',
         component: Layout,
         redirect: 'noredirect',
-        // alwaysShow: true, // will always show the root menu
         meta: {
             roles: ['admin', 'editor'],
-            title: '通道&用户管理',
+            title: '用户管理',
             icon: 'yonghu'
         },
         children: [
@@ -118,7 +117,7 @@ const routes = [
                 }
             }
         ]
-    },
+    }
 ];
 
 export default routes;

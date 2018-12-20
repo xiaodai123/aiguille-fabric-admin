@@ -59,7 +59,7 @@
                 </el-table-column>
             </el-table>
             <div v-if="pageInfo.total != 0" style="text-align: right;margin-top: 30px;">
-                <el-pagination mini layout="prev, pager, next" :current-page="pageInfo.pageNum" :page-size="pageInfo.pageSize" :total="pageInfo.total" @current-change="currentChange"></el-pagination>
+                <el-pagination mini layout="total, prev, pager, next" :current-page="pageInfo.pageNum" :page-size="pageInfo.pageSize" :total="pageInfo.total" @current-change="currentChange"></el-pagination>
             </div>
         </section>
         <el-dialog :close-on-click-modal="false" :close-on-press-escape="false" :visible.sync="dialogVisible" :title="title">
@@ -106,7 +106,7 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item prop="construct" label="通道是否已构造">
-                            <el-checkbox :disabled="true" v-model="channelInfo.construct"></el-checkbox>
+                            <el-checkbox :disabled="operType == 'INFO'" v-model="channelInfo.construct"></el-checkbox>
                         </el-form-item>
                     </el-col>
                 </el-row>

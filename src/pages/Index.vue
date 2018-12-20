@@ -30,14 +30,14 @@ export default {
     }
 }
 </script>
-<style lang="sass">
-    div[data-index-box] {
-        .div3 {
-            width: 100px;
-            height: 100px;
-            background-color: aqua;
-        }
+<style lang="scss">
+div[data-index-box] {
+    .div3 {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
     }
+}
 </style>
 
 

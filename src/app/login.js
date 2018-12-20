@@ -71,7 +71,7 @@ let login = new Vue({
                     // window.location.href = 'aifAdmin.html';
                     this.$get(AIGUILLE_FABRIC + '/login/userLogin', loginFrom, data => {
                         if (data.code === '0000') {
-                            Session.set('UINFO', JSON.stringify(this.loginFrom));
+                            Session.set('UINFO', JSON.stringify(data.data));
                             this.loading = false;
                             window.location.href = 'aifAdmin.html';
                         } else {

@@ -32,7 +32,7 @@ function configRouter(store, asyncRouterMap) {
             window.location.href = 'login.html';
         } else {
             if (!store.getters.geti) {
-                store.dispatch('auth/setUserInfo', userInfo);
+                store.dispatch('auth/setUserInfo', JSON.parse(userInfo));
                 store.dispatch('permission/generateRoutes', { asyncRouterMap }).then(() => {
                     // 动态添加可访问路由表
                     router.addRoutes(store.getters.addRouters);
