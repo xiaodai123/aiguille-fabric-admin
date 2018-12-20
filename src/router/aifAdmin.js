@@ -89,21 +89,32 @@ const routes = [
     {
         path: '/user',
         component: Layout,
-        redirect: '/user/index',
+        redirect: 'noredirect',
         // alwaysShow: true, // will always show the root menu
         meta: {
-            // title: 'testComp',
-            roles: ['admin', 'editor'] // you can set roles in root nav
+            roles: ['admin', 'editor'],
+            title: '通道&用户管理',
+            icon: 'yonghu'
         },
         children: [
             {
-                path: 'index',
-                name: '用户管理',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/UserManage'),
+                path: 'fabricUser',
+                name: 'FabricUser',
+                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/userManage/FabricUser'),
                 meta: {
                     roles: ['admin', 'editor'],
-                    icon: 'yonghu',
-                    title: '用户管理'
+                    icon: 'yingyong',
+                    title: 'FabricUser'
+                }
+            },
+            {
+                path: 'platformUser',
+                name: 'PlatformUser',
+                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/userManage/PlatformUser'),
+                meta: {
+                    roles: ['admin', 'editor'],
+                    icon: 'yingyong',
+                    title: 'PlatformUser'
                 }
             }
         ]
