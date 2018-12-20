@@ -3,7 +3,7 @@
         <section>
             <span style="display: flex;align-items: center;" class="cm_line">
                 <span style="flex: 1;">Organization管理</span>
-                <el-button type="primary" @click="openOrgDialog('ADD')" size="mini" round>新增</el-button>
+                <el-button v-if="orgData.length == 0" type="primary" @click="openOrgDialog('ADD')" size="mini" round>新增</el-button>
             </span>
             <hr class="cm_dotted">
         </section>
