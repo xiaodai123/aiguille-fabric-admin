@@ -5,7 +5,7 @@ const cssName = process.env.NODE_ENV !== 'production' ? '[name].css' : '[name].[
 const isProd = process.env.NODE_ENV === 'production';
 const outputPath = {
     dev: 'dist',
-    prod: 'dist'
+    prod: '/website/fabricworkTest'
 }
 module.exports = {
     isCacheLoader,

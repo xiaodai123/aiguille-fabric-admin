@@ -26,10 +26,18 @@ const prodConfig = merge(baseConfig, {
         //     verbose: true,//Write logs to console.
         //     dry: false,//Use boolean "true" to test/emulate delete. (will not remove files).
         // }),
+        // new CleanPlugin(
+        //     [config.prod.path + '/*'],
+        //     {
+        //         root: path.join(__dirname, '..'),
+        //         verbose: true,
+        //         dry: false
+        //     }
+        // ),
         new CleanPlugin(
-            ['dist/*'],
+            ['*.*'],
             {
-                root: path.join(__dirname, '..'),
+                root: config.prod.path,
                 verbose: true,
                 dry: false
             }

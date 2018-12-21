@@ -23,7 +23,8 @@ module.exports = {
         poll: false
     },
     prod: {
-        path: getPath(publicjs.outputPath.prod),
+        // path: getPath(publicjs.outputPath.prod),
+        path: publicjs.outputPath.prod,
         chunkFilename: '[name].[chunkhash:8].min.js',
         filename: 'js/[name][chunkhash:8].js',
         publicPath: '/aiguille-fabric-admin/',
