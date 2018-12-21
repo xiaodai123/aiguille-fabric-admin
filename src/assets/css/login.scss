@@ -23,4 +23,17 @@ div[login-div] {
             }
         }
     }
+    .cm_line {
+        font-size: 14px;
+    }
+    .cm_line::before {
+        content: "|";
+        font-size: 0.8em;
+        background-color: #1875f0;
+        color: #1875f0;
+        margin-right: 0.43em;
+    }
+    .cm_dotted {
+        border: 1px dashed #DBE4F0;
+    }
 }
