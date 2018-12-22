@@ -74,7 +74,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 div[data-sidebar-item] {
     .submenu-title-noDropdown {
         padding-left: 10px !important;

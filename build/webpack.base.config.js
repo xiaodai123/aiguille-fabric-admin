@@ -1,6 +1,7 @@
 /**
  * 基础配置
  */
+const path = require('path');
 const webpack = require('webpack');
 const { getLatestDllFile, getPath, createLintingRule, createEntry } = require('./config/utils');
 const vueLoader = require('./config/vue.loader');
@@ -18,11 +19,11 @@ function createHtmlWebpackPlugins(filePath) {
     let htmlWebpackPlugins = [];
     Object.keys(filePath).forEach(key => {
         htmlWebpackPlugins.push(new HtmlWebpackPlugin({
-            title: 'AIGUILLE-FABRIC-ADMIN',
+            title: 'AIGUILLE-FABRIC-ADMIN1',
             template: filePath[key].html,
             filename: key + '.html',
             chunks: ['runtime', 'common', key],
-            favicon: getPath('favicon.ico'),
+            favicon: getPath('src/static/favicon.ico'),
             inject: true
         }))
     });
@@ -58,7 +59,7 @@ const baseConfig = {
                 use: ['happypack/loader?id=babel']
             },
             {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                test: /\.(png|jpe?g|gif|svg)$/,
                 loader: 'url-loader',
                 options: {
                     limit: 1000,
@@ -66,13 +67,17 @@ const baseConfig = {
                 }
             },
             {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 1000, // 1 KO
+                    name: 'fonts/[name].[hash:7].[ext]'
+                }
+            },
+            {
                 test: /\.vue$/,
                 use: ['happypack/loader?id=vue']
                 // loader: vueLoader(),
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
-                loader: 'file-loader?name=fonts/[name].[ext]'
             },
             {
                 test: /\.(webm|mp4)$/,
@@ -194,8 +199,9 @@ const baseConfig = {
         // 复制文件
         new CopyWebpackPlugin([
             {
-                from: 'src/static',
-                to: 'static'
+                from: path.resolve(__dirname, '../src/static'),
+                to: 'static',
+                force: true
             }
         ]),
         ...createHtmlWebpackPlugins(filePath),
@@ -215,7 +221,7 @@ const baseConfig = {
         //     // vendorJsName: '/static/dll.js',//???
         // }),
         new HtmlWebpackIncludeAssetsPlugin({
-            assets: getLatestDllFile('static/dll.js'),
+            assets: getLatestDllFile('static/mainfest/dll.js'),
             append: false// 指定资产是否应在任何现有资产之前添加（false），或在其之后追加（true）。
         }),
         /**
@@ -250,7 +256,7 @@ const baseConfig = {
          * 像 antd、lodash 这种功能性组件库，可以通过 tree shaking 来进行消除，只保留有用的代码，千万不要直接打到 vendor 第三方库里，不然你将大量执行无用的代码。
          */
         new webpack.DllReferencePlugin({
-            manifest: require('./../src/static/dll.mainfest.json')
+            manifest: require('./../src/static/mainfest/dll.mainfest.json')
             // name: require('./../static/dll.mainfest.json').name,
             // content: require('./../static/dll.mainfest.json').content,
         })

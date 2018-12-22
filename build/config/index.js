@@ -27,9 +27,11 @@ module.exports = {
         path: publicjs.outputPath.prod,
         chunkFilename: '[name].[chunkhash:8].min.js',
         filename: 'js/[name][chunkhash:8].js',
-        publicPath: '/aiguille-fabric-admin/',
-        devtool: '#source-map',
+        publicPath: './',
+        // devtool: '#source-map',
+        devtool: 'hidden-source-map',
         productionSourceMap: true,
+        cacheBusting: false,
         productionGzip: true,
         productionGzipExtensions: ['js', 'css'],
         bundleAnalyzerReport: true
@@ -40,12 +42,14 @@ module.exports = {
             login: {
                 js: './src/app/login.js',
                 html: './src/app/login.html'
-                // css: './src/assets/css/login.scss'
             },
             aifAdmin: {
                 js: './src/app/aifAdmin.js',
                 html: './src/app/aifAdmin.html'
-                // css: './src/assets/css/login.scss'
+            },
+            error: {
+                js: './src/app/error.js',
+                html: './src/app/error.html'
             }
         }
     }

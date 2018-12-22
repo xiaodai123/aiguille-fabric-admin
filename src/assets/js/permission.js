@@ -25,8 +25,8 @@ const router = new VueRouter({
 function configRouter(store, asyncRouterMap) {
     router.beforeEach((to, from, next) => {
         NProgress.start();// start progress bar
-        let userInfo = Session.get('UINFO');
-        if (!userInfo) {
+        let userInfo = Session.get('UINFO') || '';
+        if (userInfo === '') {
             next(false);
             NProgress.done();
             window.location.href = 'login.html';

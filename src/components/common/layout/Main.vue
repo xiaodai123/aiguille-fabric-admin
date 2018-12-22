@@ -1,11 +1,11 @@
 <template>
     <section class="app-main">
         <ScrollBar class="tags_view_scrollbar">
-        <transition name="fade-transform" mode="out-in">
-            <keep-alive :include="cachedViews">
-                <router-view :key="key"></router-view>
-            </keep-alive>
-        </transition>
+            <transition name="fade-transform" mode="out-in">
+                <keep-alive :include="cachedViews">
+                    <router-view :key="key"></router-view>
+                </keep-alive>
+            </transition>
         </ScrollBar>
     </section>
 </template>
@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="sass">
 .app-main {
     .tags_view_scrollbar {
         height: calc(100vh - 122px);

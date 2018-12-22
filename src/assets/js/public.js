@@ -177,14 +177,19 @@ class $v {
             isOk = true;
         }
         // 新规范，200状态码就是成功，直接返回数据（因为以前返回数据结构有data，所以返回需要加上）
-        if (success) {
-            // success({
-            //     data,
-            //     headers,
-            //     isOk,
-            //     url
-            // })
-            success(data)
+        if (data.code === '1001') {
+            sessionStorage.clear();
+            location.href = 'login.html';
+        } else {
+            if (success) {
+                // success({
+                //     data,
+                //     headers,
+                //     isOk,
+                //     url
+                // })
+                success(data)
+            }
         }
     }
 }

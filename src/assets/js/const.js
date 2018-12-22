@@ -1,5 +1,5 @@
 const AIGUILLE_FABRIC = '/aiguille_fabric';
-const FONT_IMG = 'el-icon-fabric-';
+const FONT_IMG = 'fabric-';
 const PAGE_SIZE = 5;
 
 export {

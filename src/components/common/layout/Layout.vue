@@ -33,7 +33,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 div[data-layout-box] {
     display: flex;
     .sidebar-container {

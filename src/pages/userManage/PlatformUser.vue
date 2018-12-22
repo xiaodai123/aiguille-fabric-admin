@@ -248,7 +248,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 div[platform-user] {
     .el-select {
         width: 100%;

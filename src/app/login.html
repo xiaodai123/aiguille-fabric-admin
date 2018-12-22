@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/ico" href="/static/favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
@@ -19,7 +20,7 @@
                         <el-col :span="24">
                             <el-form-item label="" prop="username">
                                 <el-input v-model="loginFrom.username" auto-complete="on" placeholder="请输入用户名">
-                                    <i slot="prefix" class="el-input__icon el-icon-fabric-people"></i>
+                                    <i slot="prefix" class="el-input__icon fabric-people"></i>
                                 </el-input>
                             </el-form-item>
                         </el-col>
@@ -28,8 +29,8 @@
                         <el-col :span="24">
                             <el-form-item label="" prop="password">
                                 <el-input :type="passwordType" v-model="loginFrom.password" @keyup.enter.native="handleLogin" auto-complete="on" placeholder="请输入密码">
-                                    <i slot="prefix" class="el-input__icon el-icon-fabric-lock"></i>
-                                    <i slot="suffix" style="cursor: pointer;" @click="showPwd" class="el-input__icon el-icon-fabric-eye"></i>
+                                    <i slot="prefix" class="el-input__icon fabric-lock"></i>
+                                    <i slot="suffix" style="cursor: pointer;" @click="showPwd" class="el-input__icon fabric-eye"></i>
                                 </el-input>
                             </el-form-item>
                         </el-col>

@@ -11,7 +11,7 @@ module.exports = {
     },
     output: {
         filename: '[name].[hash].js',
-        path: getPath('src/static'),
+        path: getPath('src/static/mainfest'),
         library: '__[name]__lib'
     },
     resolve: {
@@ -23,7 +23,7 @@ module.exports = {
     plugins: [
         new webpack.DllPlugin({
             name: '__[name]__lib',
-            path: getPath('src/static/[name].mainfest.json')
+            path: getPath('src/static/mainfest/[name].mainfest.json')
         })
     ]
 }

@@ -14,7 +14,7 @@ const routes = [
             {
                 path: 'ca',
                 name: 'CA管理',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/chainNetConfig/CaManage'),
+                component: () => import ( /* webpackChunkName: "aifAdminPage" */ '@src/pages/chainNetConfig/CaManage'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'yingyong',
@@ -24,7 +24,7 @@ const routes = [
             {
                 path: 'orderer',
                 name: 'Orderer管理',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/chainNetConfig/OrdererManage'),
+                component: () => import ( /* webpackChunkName: "aifAdminPage" */ '@src/pages/chainNetConfig/OrdererManage'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'yingyong',
@@ -34,7 +34,7 @@ const routes = [
             {
                 path: 'organization',
                 name: 'Organization管理',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/chainNetConfig/OrganizationManage'),
+                component: () => import ( /* webpackChunkName: "aifAdminPage" */ '@src/pages/chainNetConfig/OrganizationManage'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'yingyong',
@@ -44,7 +44,7 @@ const routes = [
             {
                 path: 'peer',
                 name: 'Peer管理',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/chainNetConfig/PeerManage'),
+                component: () => import ( /* webpackChunkName: "aifAdminPage" */ '@src/pages/chainNetConfig/PeerManage'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'yingyong',
@@ -67,7 +67,7 @@ const routes = [
             {
                 path: 'channel',
                 name: 'Channel管理',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/channel&chaincode/ChannelManage'),
+                component: () => import ( /* webpackChunkName: "aifAdminPage" */ '@src/pages/channel&chaincode/ChannelManage'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'yingyong',
@@ -77,7 +77,7 @@ const routes = [
             {
                 path: 'chaincode',
                 name: 'Chaincode管理',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/channel&chaincode/ChaincodeManage'),
+                component: () => import ( /* webpackChunkName: "aifAdminPage" */ '@src/pages/channel&chaincode/ChaincodeManage'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'yingyong',
@@ -99,7 +99,7 @@ const routes = [
             {
                 path: 'fabricUser',
                 name: 'FabricUser',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/userManage/FabricUser'),
+                component: () => import ( /* webpackChunkName: "aifAdminPage" */ '@src/pages/userManage/FabricUser'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'yingyong',
@@ -109,7 +109,7 @@ const routes = [
             {
                 path: 'platformUser',
                 name: 'PlatformUser',
-                component: () => import ( /* webpackChunkName: "test1" */ '@src/pages/userManage/PlatformUser'),
+                component: () => import ( /* webpackChunkName: "aifAdminPage" */ '@src/pages/userManage/PlatformUser'),
                 meta: {
                     roles: ['admin', 'editor'],
                     icon: 'yingyong',

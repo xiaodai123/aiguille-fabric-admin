@@ -297,7 +297,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 div[fabric-user] {
     .el-select {
         width: 100%;

@@ -372,7 +372,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 div[channel_manage] {
     .query-section {
         border: 1px solid #ebebeb;

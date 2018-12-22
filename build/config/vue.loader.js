@@ -5,7 +5,7 @@ const { cssLang, genCssLoader } = require('./style.loader');
 const jsLoaderOptions = require('./js.loader');
 const isProd = publicjs.isProd;
 const sourceMapEnabled = isProd ? config.prod.productionSourceMap : config.dev.cssSourceMap;
-const cacheBusting = config.dev.cacheBusting
+const cacheBusting = isProd ? config.prod.cacheBusting : config.dev.cacheBusting;
 // vue-loader的options
 module.exports = function vueLoader() {
     const vueLoaderOptions = {

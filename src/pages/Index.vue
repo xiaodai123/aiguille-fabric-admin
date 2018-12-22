@@ -214,15 +214,10 @@ export default {
                 }
             })
         }
-    },
-    computed: {
-        // ...mapGetters({
-        //     token2: 'auth/token1'
-        // })
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 div[data-index-box] {
     .div3 {
         width: 100px;

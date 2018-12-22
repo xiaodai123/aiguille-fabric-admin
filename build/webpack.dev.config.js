@@ -26,7 +26,7 @@ module.exports = merge(baseConfig, {
     },
     // source-map生成.map文件。用于定位vue里js的错误
     // eval-source-map打包进vendor.js和test.js里
-    devtool: config.prod.devtool, // 开发使用，给源文件生成映射。
+    devtool: config.dev.devtool, // 开发使用，给源文件生成映射。
     module: {
         rules: styleLoaders()
     },

@@ -78,7 +78,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 div[data-navbar-box] {
     .navbar {
         height: 50px;

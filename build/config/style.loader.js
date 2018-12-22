@@ -21,8 +21,7 @@ function genloader(name) {
     let loader = {
         loader: name + '-loader',
         options: {
-            sourceMap: sourceMapEnabled,
-            modules: false
+            sourceMap: sourceMapEnabled
         }
     }
     if (name === 'scss') {
@@ -45,13 +44,19 @@ function genCssLoader(lang) {
         // 生产环境需要提取css
         loaders = ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: loaders
+            // fallback: {
+            //     loader: 'vue-style-loader',
+            //     options: { sourceMap: false }
+            // },
+            use: loaders,
+            publicPath: '../'
         });
     } else {
         // 开发环境需要vue-style-loader将css提取到页面头部
         // 实现开发环境热加载
         loaders.unshift('vue-style-loader');
     }
+    // loaders.unshift('vue-style-loader');
     return loaders;
 }
 

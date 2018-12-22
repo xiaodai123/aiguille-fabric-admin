@@ -387,7 +387,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 div[chaincode_manage] {
     .query-section {
         border: 1px solid #ebebeb;

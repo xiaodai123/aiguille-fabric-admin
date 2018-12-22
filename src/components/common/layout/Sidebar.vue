@@ -1,6 +1,5 @@
 <template>
     <div data-sidebar-box>
-        <!-- <el-scrollbar wrapClass="scrollbar-wrapper"> -->
         <ScrollBar class="tags_view_scrollbar">
             <el-menu style="height: 100vh;" :class="{'is-collapse':isCollapse}"
                 mode="vertical"
@@ -12,7 +11,6 @@
                 active-text-color="#409eff">
                 <SidebarItem v-for="(route, index) in permissionRouters" :key="index" :item="route" :base-path="route.path"></SidebarItem>
             </el-menu>
-        <!-- </el-scrollbar> -->
         </ScrollBar>
     </div>
 </template>
@@ -36,7 +34,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 .el-menu--vertical {
     top: 0px!important;
     .el-menu--popup-right-start {

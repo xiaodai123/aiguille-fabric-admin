@@ -1,4 +1,3 @@
-const path = require('path')
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const { styleLoaders } = require('./config/style.loader');
@@ -16,7 +15,7 @@ const prodConfig = merge(baseConfig, {
         publicPath: config.prod.publicPath,
         chunkFilename: config.prod.chunkFilename
     },
-    devtool: config.prod.productionSourceMap ? config.prod.devtool : false,
+    devtool: config.prod.devtool,
     module: {
         rules: styleLoaders()
     },
@@ -26,16 +25,8 @@ const prodConfig = merge(baseConfig, {
         //     verbose: true,//Write logs to console.
         //     dry: false,//Use boolean "true" to test/emulate delete. (will not remove files).
         // }),
-        // new CleanPlugin(
-        //     [config.prod.path + '/*'],
-        //     {
-        //         root: path.join(__dirname, '..'),
-        //         verbose: true,
-        //         dry: false
-        //     }
-        // ),
         new CleanPlugin(
-            ['*.*'],
+            ['*'],
             {
                 root: config.prod.path,
                 verbose: true,
@@ -53,9 +44,7 @@ const prodConfig = merge(baseConfig, {
         }),
         // 会导致z-index优化，到手机版样式发生变化
         new OptimizeCSSPlugin({
-            cssProcessorOptions: config.prod.productionSourceMap
-                ? { safe: true, map: { inline: false } }
-                : { safe: true }
+            cssProcessorOptions: { safe: true }
         }),
         // 生产环境
         new webpack.optimize.UglifyJsPlugin({
@@ -71,8 +60,8 @@ const prodConfig = merge(baseConfig, {
         }), // 压缩你的JavaScript代码
         // css单独打包,自动添加css前缀，生产环境
         new ExtractTextPlugin({
-            filename: 'css/' + publicjs.cssName,
-            allChunks: true// 把所有的css打包成一个文件
+            filename: 'css/' + publicjs.cssName
+            // allChunks: true// 把所有的css打包成一个文件
         })
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: 'vendor',

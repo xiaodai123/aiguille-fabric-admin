@@ -10,7 +10,7 @@ const routes = [
     //     }
     // },
     {
-        path: '',
+        path: '/',
         redirect: '/index',
         component: Layout,
         meta: { role: ['admin'] },
@@ -26,16 +26,6 @@ const routes = [
                 }
             }
         ]
-    },
-    {
-        path: '/401',
-        component: () => import ( /* webpackChunkName: "401" */ '~comp/common/errorPage/401'),
-        hidden: true
-    },
-    {
-        path: '/404',
-        component: () => import ( /* webpackChunkName: "401" */ '~comp/common/errorPage/404'),
-        hidden: true
     }
 ]
 
