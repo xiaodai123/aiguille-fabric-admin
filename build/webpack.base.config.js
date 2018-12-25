@@ -148,12 +148,12 @@ const baseConfig = {
          * 在所有的 async chunk ( Emoji.chunk.js 和 Photos.chunk.js ) 中找到引用 2 次以上的模块，
          * 也就是 MagicBtn 咯，那把他挪到 used-twice chunk 中
          */
-        new webpack.optimize.CommonsChunkPlugin({
-            async: 'used-twice',
-            minChunks: (module, count) => (
-                count >= 2
-            )
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     async: 'used-twice',
+        //     minChunks: (module, count) => (
+        //         count >= 2
+        //     )
+        // }),
         // 提取第三方代码、使用了dll
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: 'vendor',

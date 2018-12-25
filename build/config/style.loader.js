@@ -13,37 +13,42 @@ let cssLang = [{
 },
 {
     name: 'sass',
+    reg: /\.sass$/,
+    loader: 'sass-loader'
+},
+{
+    name: 'scss',
     reg: /\.scss$/,
     loader: 'sass-loader'
 }
 ];
-function genloader(name) {
+function genloader(lang) {
     let loader = {
-        loader: name + '-loader',
+        loader: lang.loader,
         options: {
             sourceMap: sourceMapEnabled
         }
     }
-    if (name === 'scss') {
+    if (lang.name === 'sass') {
         loader.options.indentedSyntax = true;
     }
     return loader;
 }
 function genCssLoader(lang) {
-    let cssLoader = genloader('css');
-    let postcssLoader = genloader('postcss');
+    let cssLoader = genloader({ name: 'css', loader: 'css-loader' });
+    let postcssLoader = genloader({ name: 'postcss', loader: 'postcss-loader' });
     // let postcssLoader = {
     //     loader: 'postcss-loader',
     //     options: postcssConfig(),
     // }
     let loaders = [cssLoader, postcssLoader];
     if (lang.name !== 'css') {
-        loaders.push(genloader(lang.name));
+        loaders.push(genloader(lang));
     }
     if (isProd) {
         // 生产环境需要提取css
         loaders = ExtractTextPlugin.extract({
-            fallback: 'style-loader',
+            fallback: 'vue-style-loader',
             // fallback: {
             //     loader: 'vue-style-loader',
             //     options: { sourceMap: false }

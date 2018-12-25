@@ -9,7 +9,8 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="platformUserData">
-                <el-table-column prop="id" align="center" label="ID"></el-table-column>
+                <!-- <el-table-column prop="id" align="center" label="ID"></el-table-column> -->
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column prop="username" align="center" label="名称"></el-table-column>
                 <el-table-column prop="roleName" align="center" label="角色"></el-table-column>
                 <el-table-column prop="createDate" align="center" label="创建时间"></el-table-column>
@@ -18,7 +19,7 @@
                     <template slot-scope="scope">
                         <div v-if="roleCode == 1" style="display: flex;justify-content: center;">
                             <el-button type="primary" @click="openPlatformUserInfo(scope.row.id, 'MOD')" size="mini">修改</el-button>
-                            <el-button type="primary" @click="delPlatformUserInfo(scope.row.id)" size="mini">删除</el-button>
+                            <el-button type="primary" v-if="scope.row.id != userId" @click="delPlatformUserInfo(scope.row.id)" size="mini">删除</el-button>
                         </div>
                         <div v-else>无</div>
                     </template>
@@ -53,6 +54,20 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
+                <el-row v-if="operType == 'MOD'">
+                    <el-col :span="24">
+                        <el-form-item prop="password" label="新密码">
+                            <el-input v-model="platformUserInfo.password" placeholder="请输入密码"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item prop="passwordS" label="确认密码">
+                            <el-input v-model="platformUserInfo.passwordS" placeholder="请输入确认密码"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
             </el-form>
             <span slot="footer">
                 <el-button type="primary" @click="submitPlatformUserInfo" size="small">提交</el-button>
@@ -75,6 +90,15 @@ import { AIGUILLE_FABRIC, PAGE_SIZE } from '~compJs/const';
 // Vue.use(Input);
 export default {
     data() {
+        let changePasswordS = (rule, value, callback) => {
+            if (!value) {
+                return callback(new Error('请输入确认密码'));
+            }
+            if(this.platformUserInfo.password != value) {
+                return callback(new Error('请确认密码'));
+            }
+            callback();
+        }
         return {
             platformUserData: [],
             dialogVisible: false,
@@ -83,13 +107,15 @@ export default {
             platformUserRule: {
                 username: [{required: true, message: '请输入名称', trigger: 'blur'}],
                 role: [{required: true, message: '请选择角色', trigger: 'blur'}],
-                password: [{required: true, message: '请输入密码', trigger: 'blur'}]
+                password: [{required: true, message: '请输入密码', trigger: 'blur'}],
+                passwordS: [{required: true, validator: changePasswordS, trigger: 'blur'}]
             },
             platformUserInfo: {
                 id: -1,
                 username: '',//名称
                 role: '',//角色
-                password: ''
+                password: '',
+                passwordS: ''
             },
             pageInfo: {
                 pageNum: 1,
@@ -128,6 +154,7 @@ export default {
             this.platformUserInfo.username = '';//名称
             this.platformUserInfo.role = '';//角色
             this.platformUserInfo.password = '';
+            this.platformUserInfo.passwordS = '';
         },
         getPlatformUser(id) {
             return new Promise((reslove, reject) => {
@@ -157,9 +184,10 @@ export default {
                 cancelButtonText: "取消",
                 type: 'fail'
             }).then(() => {
-                this.$post(AIGUILLE_FABRIC + '/platformUser/deleteUser', { userId: id }, d => {
+                this.$post(AIGUILLE_FABRIC + '/platformUser/deleteUser', { userId: Number(id) }, d => {
                     if(d.code == '0000') {
                         this.$message({ message: d.message, type: 'success' });
+                        this.getPlatformUserList();
                         // this.$box({title: '提示', message: d.message, type: 'success'});
                     }else {
                         // this.$box({title: '提示', message: d.message, type: 'fail'});
@@ -192,7 +220,7 @@ export default {
                             let userIdd = this.userInfo.id;
                             this.getPlatformUserList();
                             if(this.operType == 'MOD') {
-                                if(roleCode == 1 && userIdd != id) {
+                                if(roleCode == 1 && userIdd != this.platformUserInfo.id) {
                                     this.$message({ message: d.message, type: 'success' });
                                     this.getPlatformUserList();
                                     this.resetForm();
@@ -248,7 +276,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[platform-user] {
     .el-select {
         width: 100%;

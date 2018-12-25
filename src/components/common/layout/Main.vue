@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="scss">
 .app-main {
     .tags_view_scrollbar {
         height: calc(100vh - 122px);

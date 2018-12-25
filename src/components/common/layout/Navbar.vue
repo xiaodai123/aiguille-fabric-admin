@@ -15,6 +15,7 @@
                     <!-- 设置国际化 -->
                     <!-- <LangSelect class="for-line"></LangSelect> -->
                     <!-- 用户操作 -->
+                    <div style="font-size: 14px;">欢迎{{username}}</div>
                     <el-dropdown class="for-line" trigger="hover">
                         <div style="display:flex;">
                             <img class="user-img" :src="userJpg" alt="">
@@ -49,6 +50,10 @@ export default {
         // Screenfull,
         // LangSelect
     },
+    mounted() {
+        this.userInfo = JSON.parse(Session.get('UINFO'));
+        this.username = this.userInfo.username;
+    },
     computed: {
         ...mapGetters([
             'sidebar'
@@ -73,12 +78,14 @@ export default {
     },
     data() {
         return {
-            userJpg
+            userJpg,
+            userInfo: '',
+            username: ''
         }
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[data-navbar-box] {
     .navbar {
         height: 50px;

@@ -32,7 +32,8 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="peerData">
-                <el-table-column prop="peerId" align="center" label="ID"></el-table-column>
+                <!-- <el-table-column prop="peerId" align="center" label="ID"></el-table-column> -->
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column align="center" label="名称">
                     <template slot-scope="scope">
                         <span style="text-decoration-line: underline;cursor: pointer;" @click="operPeerInfo(scope.row.peerId, 'INFO')">{{scope.row.peerName}}</span>
@@ -314,7 +315,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[peer_manage] {
     .query-section {
         border: 1px solid #ebebeb;

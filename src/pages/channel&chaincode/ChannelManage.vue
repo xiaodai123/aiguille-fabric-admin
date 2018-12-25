@@ -36,7 +36,8 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="channelData">
-                <el-table-column width="50" prop="channelId" align="center" label="ID"></el-table-column>
+                <!-- <el-table-column width="50" prop="channelId" align="center" label="ID"></el-table-column> -->
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column align="center" label="名称">
                     <template slot-scope="scope">
                         <span style="text-decoration-line: underline;cursor: pointer;" @click="operChannelInfo(scope.row.channelId, 'INFO')">{{scope.row.channelName}}</span>
@@ -88,7 +89,7 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="Orderer">
-                            <el-select :disabled="operType == 'INFO'" clearable multiple filterable value-key="ordererId" v-model="channelInfo.ordererList" placeholder="请选择Orderer">
+                            <el-select :disabled="operType == 'INFO'" clearable multiple filterable value-key="id" v-model="channelInfo.ordererList" placeholder="请选择Orderer">
                                 <el-option v-for="(orderer, index) in ordererData" :key="index" :label="orderer.name" :value="orderer"></el-option>
                             </el-select>
                         </el-form-item>
@@ -97,7 +98,7 @@
                 <el-row>
                     <el-col :span="24">
                         <el-form-item label="Peer">
-                            <el-select :disabled="operType == 'INFO'" clearable multiple filterable value-key="peerId" v-model="channelInfo.peerList" placeholder="请选择Peer">
+                            <el-select :disabled="operType == 'INFO'" clearable multiple filterable value-key="id" v-model="channelInfo.peerList" placeholder="请选择Peer">
                                 <el-option v-for="(peer, index) in peerData" :key="index" :label="peer.name" :value="peer"></el-option>
                             </el-select>
                         </el-form-item>
@@ -263,8 +264,8 @@ export default {
             return new Promise((reslove, reject) => {
                 this.$get(AIGUILLE_FABRIC + '/channel/getChannel', { channelId: id }, d => {
                     if(d.code == '0000') {
-                        this.channelInfo.id = d.data.channelId;
-                        this.channelInfo.name = d.data.channelName;//名称
+                        this.channelInfo.id = d.data.id;
+                        this.channelInfo.name = d.data.name;//名称
                         this.channelInfo.txPath = d.data.txPath;
                         this.channelInfo.ordererList = d.data.ordererList || [];
                         this.channelInfo.peerList = d.data.peerList || [];
@@ -372,7 +373,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[channel_manage] {
     .query-section {
         border: 1px solid #ebebeb;

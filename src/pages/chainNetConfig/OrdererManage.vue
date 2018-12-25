@@ -29,7 +29,8 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="ordererData">
-                <el-table-column prop="ordererId" align="center" label="ID"></el-table-column>
+                <!-- <el-table-column prop="ordererId" align="center" label="ID"></el-table-column> -->
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column align="center" label="名称">
                     <template slot-scope="scope">
                         <span style="text-decoration-line: underline;cursor: pointer;" @click="operOrdererInfo(scope.row.ordererId, 'INFO')">{{scope.row.ordererName}}</span>
@@ -276,7 +277,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[orderer_manage] {
     .query-section {
         border: 1px solid #ebebeb;

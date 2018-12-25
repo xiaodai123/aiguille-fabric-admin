@@ -9,7 +9,8 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="fabricUserData">
-                <el-table-column width="50" prop="id" align="center" label="ID"></el-table-column>
+                <!-- <el-table-column width="50" prop="id" align="center" label="ID"></el-table-column> -->
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column align="center" label="名称">
                     <template slot-scope="scope">
                         <span style="text-decoration-line: underline;cursor: pointer;" @click="openFabricUserInfo(scope.row.id, 'INFO')">{{scope.row.userName}}</span>
@@ -297,7 +298,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[fabric-user] {
     .el-select {
         width: 100%;

@@ -34,7 +34,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 .el-menu--vertical {
     top: 0px!important;
     .el-menu--popup-right-start {

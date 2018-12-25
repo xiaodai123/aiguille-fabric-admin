@@ -9,10 +9,11 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="chaincodeData">
-                <el-table-column width="50" prop="id" align="center" label="ID"></el-table-column>
+                <!-- <el-table-column width="50" prop="codeId" align="center" label="ID"></el-table-column> -->
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column align="center" label="名称">
                     <template slot-scope="scope">
-                        <span style="text-decoration-line: underline;cursor: pointer;" @click="operChaincodeInfo(scope.row.id, 'INFO')">{{scope.row.name}}</span>
+                        <span style="text-decoration-line: underline;cursor: pointer;" @click="operChaincodeInfo(scope.row.codeId, 'INFO')">{{scope.row.codeName}}</span>
                     </template>
                 </el-table-column>
                 <el-table-column prop="version" align="center" label="版本"></el-table-column>
@@ -22,11 +23,11 @@
                 <el-table-column width="220" align="center" label="操作">
                     <template slot-scope="scope">
                         <div style="display: flex;justify-content: center;">
-                            <el-button type="primary" @click="operChaincodeInfo(scope.row.id, 'MOD')" size="mini">修改</el-button>
-                            <el-button type="primary" @click="delChaincodeInfo(scope.row.id)" size="mini">删除</el-button>
-                            <el-button v-if="!scope.row.install" type="primary" @click="installChaincode(scope.row.id)" size="mini">安装</el-button>
-                            <el-button v-if="!scope.row.instantiate && scope.row.install" type="primary" @click="instantiateChaicode(scope.row.id)" size="mini">初始化</el-button>
-                            <el-button v-if="!scope.row.upgrade && scope.row.instantiate && scope.row.install" type="primary" @click="upgradeChaicode(scope.row.id)" size="mini">升级</el-button>
+                            <el-button type="primary" @click="operChaincodeInfo(scope.row.codeId, 'MOD')" size="mini">修改</el-button>
+                            <el-button type="primary" @click="delChaincodeInfo(scope.row.codeId)" size="mini">删除</el-button>
+                            <el-button v-if="!scope.row.install" type="primary" @click="installChaincode(scope.row.codeId)" size="mini">安装</el-button>
+                            <el-button v-if="!scope.row.instantiate && scope.row.install" type="primary" @click="instantiateChaicode(scope.row.codeId)" size="mini">初始化</el-button>
+                            <el-button v-if="!scope.row.upgrade && scope.row.instantiate && scope.row.install" type="primary" @click="upgradeChaicode(scope.row.codeId)" size="mini">升级</el-button>
                         </div>
                     </template>
                 </el-table-column>
@@ -387,7 +388,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[chaincode_manage] {
     .query-section {
         border: 1px solid #ebebeb;

@@ -10,7 +10,7 @@ const routes = [
     //     }
     // },
     {
-        path: '/',
+        path: '',
         redirect: '/index',
         component: Layout,
         meta: { role: ['admin'] },

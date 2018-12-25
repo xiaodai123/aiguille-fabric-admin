@@ -42,7 +42,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 .app-breadcrumb.el-breadcrumb {
     display: inline-block;
     font-size: 14px;

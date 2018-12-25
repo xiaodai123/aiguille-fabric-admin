@@ -9,7 +9,8 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="orgData">
-                <el-table-column prop="orgId" align="center" label="ID"></el-table-column>
+                <!-- <el-table-column prop="orgId" align="center" label="ID"></el-table-column> -->
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column align="center" label="名称">
                     <template slot-scope="scope">
                         <span style="text-decoration-line: underline;cursor: pointer;" @click="operOrgInfo(scope.row.orgId, 'INFO')">{{scope.row.orgName}}</span>

@@ -56,7 +56,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 .scroll-container{
     white-space: nowrap;
     position: relative;

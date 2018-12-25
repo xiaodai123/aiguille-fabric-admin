@@ -12,6 +12,7 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="leagueInfos">
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column prop="leagueName" align="center" label="名称"></el-table-column>
                 <el-table-column prop="remark" align="center" label="描述"></el-table-column>
                 <el-table-column prop="createdatetime" align="center" label="创建时间"></el-table-column>
@@ -217,7 +218,7 @@ export default {
     }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 div[data-index-box] {
     .div3 {
         width: 100px;

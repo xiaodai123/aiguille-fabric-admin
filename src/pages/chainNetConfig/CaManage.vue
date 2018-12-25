@@ -9,7 +9,8 @@
         </section>
         <section>
             <el-table size="mini" :header-cell-style="{'background-color':'#F4F5F9','height':'40px'}" border :data="caData">
-                <el-table-column prop="id" align="center" label="ID"></el-table-column>
+                <!-- <el-table-column prop="id" align="center" label="ID"></el-table-column> -->
+                <el-table-column align="center" type="index" width="50" label="ID"></el-table-column>
                 <el-table-column align="center" label="名称">
                     <template slot-scope="scope">
                         <span style="text-decoration-line: underline;cursor: pointer;" @click="operCaInfo(scope.row.id, 'INFO')">{{scope.row.name}}</span>
